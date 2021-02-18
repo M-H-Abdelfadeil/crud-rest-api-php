@@ -1,0 +1,16 @@
+{
+    "name": "mahmoud-abdelfadeil/crud-api-php",
+    "description": "crud api using JWT",
+    "authors": [
+        {
+            "name": "M-H-Abdelfadeil",
+            "email": "mahmoudhasan509@gmail.com"
+        }
+    ],
+    "require": {
+        "firebase/php-jwt": "^5.2"
+    },
+    "autoload": {
+        "App\\":"app"
+    }
+}
