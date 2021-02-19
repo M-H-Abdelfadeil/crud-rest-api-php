@@ -4,8 +4,50 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "25d0a825c2f05e18801557350810da7f",
+    "content-hash": "99310e4fb04356ca0ca0b6b03982c117",
     "packages": [
+        {
+            "name": "dcblogdev/pdo-wrapper",
+            "version": "v2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dcblogdev/pdo-wrapper.git",
+                "reference": "6c048b1838858d3d825b75f11b98d13b6cf43eee"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dcblogdev/pdo-wrapper/zipball/6c048b1838858d3d825b75f11b98d13b6cf43eee",
+                "reference": "6c048b1838858d3d825b75f11b98d13b6cf43eee",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Dcblogdev\\PdoWrapper\\": "/src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "David Carr",
+                    "email": "dave@dcblog.dev",
+                    "homepage": "https://dcblog.dev",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A crud wrapper for PDO",
+            "support": {
+                "issues": "https://github.com/dcblogdev/pdo-wrapper/issues",
+                "source": "https://github.com/dcblogdev/pdo-wrapper/tree/v2.0.1"
+            },
+            "time": "2020-04-19T23:52:33+00:00"
+        },
         {
             "name": "firebase/php-jwt",
             "version": "v5.2.1",
@@ -59,6 +101,43 @@
                 "source": "https://github.com/firebase/php-jwt/tree/v5.2.1"
             },
             "time": "2021-02-12T00:02:00+00:00"
+        },
+        {
+            "name": "mahmoud-abdelfadeil/validator-filter-php",
+            "version": "v1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/M-H-Abdelfadeil/validator-filter-php.git",
+                "reference": "7d9c2a1e6918c5f366a1bcb70caed10bfd101b34"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/M-H-Abdelfadeil/validator-filter-php/zipball/7d9c2a1e6918c5f366a1bcb70caed10bfd101b34",
+                "reference": "7d9c2a1e6918c5f366a1bcb70caed10bfd101b34",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ValidatorFilterPHP\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "M-H-Abdelfadeil",
+                    "email": "mahmoudhasan509@gmail.com"
+                }
+            ],
+            "description": "package to facilitate validation and filtering in PHP",
+            "support": {
+                "issues": "https://github.com/M-H-Abdelfadeil/validator-filter-php/issues",
+                "source": "https://github.com/M-H-Abdelfadeil/validator-filter-php/tree/v1"
+            },
+            "time": "2021-02-18T14:00:07+00:00"
         }
     ],
     "packages-dev": [],
