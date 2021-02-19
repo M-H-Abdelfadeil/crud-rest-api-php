@@ -19,7 +19,7 @@ trait LoginTrait{
     public function execute_login(){
         $email   =$this->filter->email($_REQUEST['email']);
         $password=$this->filter->string($_REQUEST['password']);
-        $data=$this->model->login($email);
+        $data=$this->model()->login($email);
         if(!$data){
             return res_jsone(0 , 'The email and password do not match' , 200 );
         }else{
@@ -52,11 +52,11 @@ trait LoginTrait{
             'email'=>$data['email'], 
         ];
         $payload=[
-            'iss'=>Host,
+            'iss'=>HOST_APP,
             'iat'=>time(),
             'exp'=>time()+3600,
             'aud'=>'usersApi',
-            'data'=>$data_user,
+            'data_user'=>$data_user,
 
         ];
 

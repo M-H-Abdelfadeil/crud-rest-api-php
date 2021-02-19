@@ -1,11 +1,16 @@
 <?php
 namespace App\Controllers;
+use App\Models\AuthModel;
 use App\Controllers\Controller;
 use App\Traits\RegisterTrait;
 use App\Traits\LoginTrait;
 class AuthController extends Controller{
     use LoginTrait;
     use RegisterTrait;
+    public function model()
+    {
+      return new AuthModel;
+    }
     public function login(){
         $nedded_requsts=['email','password'];
         $data_not_found=notfound_data($nedded_requsts);

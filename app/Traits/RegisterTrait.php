@@ -19,7 +19,7 @@ trait RegisterTrait{
         $password=$this->filter->string($_REQUEST['password']);
         $password=password_hash($password,PASSWORD_DEFAULT);
 
-        $id= $this->model->register($name,$email,$password);
+        $id= $this->model()->register($name,$email,$password);
         if($id){
             return [
                 'id'=>$id,
