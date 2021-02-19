@@ -5,5 +5,5 @@ use App\Controllers\AuthController;
 
 $auth= new AuthController;
 
-echo $auth->login();
+return $auth->login();
 

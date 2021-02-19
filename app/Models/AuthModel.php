@@ -2,8 +2,9 @@
 namespace App\Models;
 use App\Models\DatabaseConfig;
 class AuthModel extends DatabaseConfig{
-    public function login(){
-      
+    public function login($email){
+      $sql="SELECT * FROM users WHERE email = '$email' ";   
+      return $this->db->run($sql)->fetch();
     }
 
 

@@ -36,7 +36,7 @@ trait RegisterTrait{
         $rules=[
             'name'=>'required|string|max_length:100',
             'email'=>'required|email|max_length:255|unique:users,email',
-            'password'=>'required|string'
+            'password'=>'required|string|min_length:8'
         ];
         $this->validate->Validator($rules);
         return $this->validate->has_error_validate();
