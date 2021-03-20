@@ -4,6 +4,8 @@ use App\Handlers\Post\PostCreateHandler;
 use App\Handlers\Post\PostIndexHandler;
 use App\Handlers\Post\PostShowHandler;
 use App\Handlers\Post\PostDeleteHandler;
+use App\Handlers\Post\PostEditHandler;
+use App\Handlers\Post\PostUpdateHandler;
 use App\Models\PostModel;
 
 class PostController {
@@ -27,6 +29,16 @@ class PostController {
     public function delete(){
         $delete=new PostDeleteHandler;
         return $delete->delete(new PostModel);
+    }
+
+    public function edit(){
+        $edit=new PostEditHandler;
+        return $edit->edit(new PostModel);
+    }
+
+    public function update(){
+        $update=new PostUpdateHandler;
+        return $update->update(new PostModel);
     }
 
 }

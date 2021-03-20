@@ -48,4 +48,33 @@ class PostModel extends DatabaseConfig{
             'user_id'=>$id_user,
         ]);
     }
+
+    public function edit($id_user,$id_post){
+        $sql="
+        SELECT * FROM posts 
+        WHERE id='$id_post' AND user_id='$id_user'
+        ";
+        return $this->db->run($sql)->fetch();
+    }
+
+    public function update($id_user,$id_post,$title,$description){
+        $sql="
+        SELECT id FROM posts
+         WHERE id='$id_post' AND user_id='$id_user'
+        ";
+        if($this->db->run($sql)->fetch()){
+            $this->db->update('posts',
+                [
+                    'title'=>$title,
+                    'description'=>$description
+                ],
+                [
+                    'id'=>$id_post
+                ]
+            );
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

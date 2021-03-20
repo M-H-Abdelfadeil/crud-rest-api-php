@@ -33,7 +33,7 @@ class PostDeleteHandler extends Handler{
 
     private function validate_delete(){
         $rules=[
-            'id_post'=>'required|number|min_val:1',
+            'id_post'=>'required|number',
             'token'=>'required'
         ];
         $this->validate->Validator($rules);

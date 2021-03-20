@@ -6,4 +6,4 @@ use App\Controllers\PostController;
 
 $post=new PostController();
 
-return $post->edit();
+return $post->update();

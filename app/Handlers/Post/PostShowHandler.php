@@ -22,7 +22,7 @@ class PostShowHandler extends Handler{
 
     private function validate_show(){
         $rules=[
-            'id_post'=>'required|number|min_val:1'
+            'id_post'=>'required|number'
         ];
         $this->validate->Validator($rules);
         return $this->validate->has_error_validate();
