@@ -40,4 +40,12 @@ class PostModel extends DatabaseConfig{
         
         
     }
+
+
+    public function delete($id_user,$id_post){
+        return $this->db->delete('posts',[
+            'id'=>$id_post,
+            'user_id'=>$id_user,
+        ]);
+    }
 }

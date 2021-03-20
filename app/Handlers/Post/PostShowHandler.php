@@ -30,7 +30,7 @@ class PostShowHandler extends Handler{
     }
 
     private function get_post($model){
-        $id_post=$this->filter->string($_REQUEST['id_post']);
+        $id_post=$this->filter->num_int($_REQUEST['id_post']);
          $data= $model->show($id_post);
          if($data){
              return $data;

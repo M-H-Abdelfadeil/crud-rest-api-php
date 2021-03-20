@@ -3,6 +3,7 @@ namespace App\Controllers;
 use App\Handlers\Post\PostCreateHandler;
 use App\Handlers\Post\PostIndexHandler;
 use App\Handlers\Post\PostShowHandler;
+use App\Handlers\Post\PostDeleteHandler;
 use App\Models\PostModel;
 
 class PostController {
@@ -21,6 +22,11 @@ class PostController {
     public function show(){
         $show=new PostShowHandler;
         return $show->show(new PostModel);
+    }
+
+    public function delete(){
+        $delete=new PostDeleteHandler;
+        return $delete->delete(new PostModel);
     }
 
 }
