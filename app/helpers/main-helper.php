@@ -1,6 +1,5 @@
 <?php
-function res_jsone($status,$msg,$status_code,$data=false){
-    http_response_code($status_code); 
+function res_jsone($status,$msg,$data=false){
     $data= [
         'status'=>$status,
         'message'=>$msg,

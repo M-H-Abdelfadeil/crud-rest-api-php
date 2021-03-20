@@ -18,7 +18,7 @@
         },
         "files": [
             "app/helpers/main-helper.php",
-            "app/config.php"
+            "config/main-config.php"
         ]
         
     }

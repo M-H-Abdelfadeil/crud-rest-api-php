@@ -1,25 +1,35 @@
 <?php
-namespace App\Traits;
+namespace App\Handlers\Auth;
+use App\Handlers\Handler;
 
-trait RegisterTrait{
-    public function handler_register(){
+class RegisterHandler extends Handler{
+    
+    public  function register($model)
+    {
+        $nedded_requests=['name','email','password'];
+        $data_not_found=notfound_data($nedded_requests);
+        if($data_not_found){
+            $msg="The data you have sent is incomplete. Add the data ( ".implode(' - ', $data_not_found) . ' )';
+            return res_jsone(0,$msg);
+        }
+
         $has_error=$this->validate_register();
         if($has_error){
-            return res_jsone(0,'error validate',500,$has_error);
+            return res_jsone(0,'error validate',$has_error);
         }else{
-            $data=$this->execute_register();
-            return res_jsone(1,'success',200,$data);
+            $data=$this->execute_register($model);
+            return res_jsone(1,'success',$data);
 
         }
     }
 
-    public function execute_register(){
+    public function execute_register($model){
         $name    =$this->filter->string($_REQUEST['name']);
         $email   =$this->filter->email($_REQUEST['email']);
         $password=$this->filter->string($_REQUEST['password']);
         $password=password_hash($password,PASSWORD_DEFAULT);
 
-        $id= $this->model()->register($name,$email,$password);
+        $id= $model->register($name,$email,$password);
         if($id){
             return [
                 'id'=>$id,

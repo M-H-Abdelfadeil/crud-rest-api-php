@@ -1,6 +1,7 @@
 <?php
-echo json_encode(
-    [
-        'test'=>1
-    ]
-);
+include '../../app/header.php';
+use App\Controllers\PostController;
+
+$posts= new PostController;
+
+return $posts->index();

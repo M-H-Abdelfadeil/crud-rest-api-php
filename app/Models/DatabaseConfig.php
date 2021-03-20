@@ -2,10 +2,10 @@
 namespace App\Models;
 use Dcblogdev\PdoWrapper\Database;
 class DatabaseConfig{
-    private $host      = "localhost";
-    private $database  = "crud-rest-api-php";
-    private $username  = "root";
-    private $password  = "";
+    private $host      = DB_HOST;
+    private $database  = DB_DATABASE;
+    private $username  = DB_USERNAME;
+    private $password  = DB_PASSWOR;
 
 
     public $db;

@@ -2,35 +2,18 @@
 namespace App\Controllers;
 use App\Models\AuthModel;
 use App\Controllers\Controller;
-use App\Traits\RegisterTrait;
 use App\Traits\LoginTrait;
-class AuthController extends Controller{
-    use LoginTrait;
-    use RegisterTrait;
-    public function model()
-    {
-      return new AuthModel;
-    }
+use App\Handlers\Auth\LoginHandler;
+use App\Handlers\Auth\RegisterHandler;
+class AuthController{
     public function login(){
-        $nedded_requsts=['email','password'];
-        $data_not_found=notfound_data($nedded_requsts);
-        if($data_not_found){
-            $msg="The data you have sent is incomplete. Add the data ( ".implode(' - ', $data_not_found) . ' )';
-            return res_jsone(0,$msg,500);
-        }else{
-            return $this->handler_login();
-        }
+        $obj=new LoginHandler;
+        $obj->login(new AuthModel);
     }
 
     public function register(){
-       $nedded_requsts=['name','email','password'];
-       $data_not_found=notfound_data($nedded_requsts);
-       if($data_not_found){
-           $msg="The data you have sent is incomplete. Add the data ( ".implode(' - ', $data_not_found) . ' )';
-           return res_jsone(0,$msg,500);
-       }else{
-           return $this->handler_register();
-       }
+        $obj =  new RegisterHandler();
+        return $obj->register(new AuthModel);
     }
 
 
