@@ -1,8 +1,10 @@
 <?php
-namespace App\Controller;
-
+namespace App\Controllers;
+use App\Handlers\User\UserProfileHandler;
+use App\Models\UserModel;
 class UserController{
-    public function test(){
-        echo 5555;
+    public function profile(){
+        $profile=new UserProfileHandler;
+        return $profile->profile(new UserModel);
     }
 }
