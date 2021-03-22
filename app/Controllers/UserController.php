@@ -9,7 +9,7 @@ use App\Models\UserModel;
 class UserController{
 
     public function profile(){
-        $profile=new UserProfileHandler;
+        $profile=new UserProfileHandlers;
         return $profile->profile(new UserModel);
     }
 
