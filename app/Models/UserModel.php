@@ -41,4 +41,29 @@ class UserModel extends DatabaseConfig{
             );
          
     }
+
+
+    public function get_old_password($id){
+        $sql="SELECT password FROM users WHERE id='$id'";
+        return $this->db->run($sql)->fetch();
+    }
+
+    public function  update_password($id,$new_password){
+        return $this->db->update('users',
+                [
+                    'password'=>$new_password,
+                ],
+                [
+                    'id'=>$id
+                ]
+            );
+    }
+
+    public  function delete($id){
+        return $this->db->delete('users',
+                [
+                    'id'=>$id
+                ]
+            );
+    }
 }

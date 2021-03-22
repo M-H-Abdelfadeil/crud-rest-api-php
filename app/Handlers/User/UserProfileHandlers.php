@@ -2,7 +2,7 @@
 namespace App\Handlers\User;
 use App\Handlers\Handler;
 
-class UserProfileHandler extends Handler{
+class UserProfileHandlers extends Handler{
     public function profile($model){
          // check requests
          $nedded_requests=['id_user'];

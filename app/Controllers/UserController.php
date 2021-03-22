@@ -1,8 +1,10 @@
 <?php
 namespace App\Controllers;
-use App\Handlers\User\UserProfileHandler;
+use App\Handlers\User\UserProfileHandlers;
 use App\Handlers\User\UserEditHandlers;
 use App\Handlers\User\UserUpdateHandlers;
+use App\Handlers\User\UserUpdatePasswordHandlers;
+use App\Handlers\User\UserDeleteHandlers;
 use App\Models\UserModel;
 class UserController{
 
@@ -20,6 +22,17 @@ class UserController{
     public function update(){
         $update=new UserUpdateHandlers;
         return $update->update(new UserModel);
+    }
+
+    public function updatePassword(){
+        $updatePassword=new UserUpdatePasswordHandlers;
+        return $updatePassword->updatePassword(new UserModel);
+    }
+
+
+    public function delete(){
+        $delete=new UserDeleteHandlers;
+        return $delete->delete(new UserModel);
     }
 
 }

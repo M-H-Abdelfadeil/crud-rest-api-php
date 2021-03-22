@@ -5,5 +5,5 @@ use App\Controllers\UserController;
 
 $user=new UserController();
 
-return $user->delete();
+return $user->updatePassword();
 
