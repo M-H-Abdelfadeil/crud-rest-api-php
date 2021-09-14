@@ -6,16 +6,16 @@ class LoginHandler extends Handler{
     public function login($model){
         // check requests
 
-        $nedded_requests=['email','password'];
-        $data_not_found=notfound_data($nedded_requests);
+        $needed_requests=['email','password'];
+        $data_not_found=not_found_data($needed_requests);
         if($data_not_found){
             $msg="The data you have sent is incomplete. Add the data ( ".implode(' - ', $data_not_found) . ' )';
-            return res_jsone(0,$msg);
+            return res_json(0,$msg);
         }
 
         $has_error=$this->validate_login();
         if($has_error){
-            return res_jsone(0,'error validate',$has_error);
+            return res_json(0,'error validate',$has_error);
         }else{
             $this->execute_login($model);
         }
@@ -27,14 +27,14 @@ class LoginHandler extends Handler{
         $password=$this->filter->string($_REQUEST['password']);
         $data=$model->login($email);
         if(!$data){
-            return res_jsone(0 , 'The email and password do not match' );
+            return res_json(0 , 'The email and password do not match' );
         }else{
           $chk_pass= $this->check_password($password,$data['password']);
           if($chk_pass){
             $data_user=$this->set_token($data);  
-            return res_jsone(1,'success login', $data_user);
+            return res_json(1,'success login', $data_user);
           }else{
-            return res_jsone(0 , 'The email and password do not match'  );
+            return res_json(0 , 'The email and password do not match'  );
           }
         }
        

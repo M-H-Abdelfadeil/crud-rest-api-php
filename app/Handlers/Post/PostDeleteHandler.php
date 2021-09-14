@@ -6,16 +6,16 @@ class PostDeleteHandler extends Handler{
     public function delete($model){
         
         $nedded_requsts=['id_post','token'];
-        $data_not_found=notfound_data($nedded_requsts);
+        $data_not_found=not_found_data($nedded_requsts);
         
         if($data_not_found){
             $msg="The data you have sent is incomplete. Add the data ( ".implode(' - ', $data_not_found) . ' )';
-            return res_jsone(0,$msg);
+            return res_json(0,$msg);
         }
 
         $has_error=$this->validate_delete();
         if($has_error){
-            return res_jsone(0,'error validate',$has_error);
+            return res_json(0,'error validate',$has_error);
         }
 
         try{
@@ -24,7 +24,7 @@ class PostDeleteHandler extends Handler{
             return $this->execute_delete($model,$id_user,$_REQUEST['id_post']);
            
         }catch(\Exception $e){
-            return res_jsone(0,$e->getMessage());
+            return res_json(0,$e->getMessage());
         }
 
     }
@@ -47,10 +47,10 @@ class PostDeleteHandler extends Handler{
         $delete=$model->delete($id_user,$id_post);
 
         if($delete){
-            return res_jsone(1,'The post has been successfully deleted');
+            return res_json(1,'The post has been successfully deleted');
         }else{
             $msg="Deleting the post failed because it does not exist or you do not have permission to delete it";
-            return res_jsone(0,$msg);
+            return res_json(0,$msg);
         }
     }
 }

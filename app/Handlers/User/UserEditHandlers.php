@@ -5,11 +5,11 @@ use Firebase\JWT\JWT;
 class UserEditHandlers extends Handler{
     public function edit($model){
        // check requests
-       $nedded_requests=['token'];
-       $data_not_found=notfound_data($nedded_requests);
+       $needed_requests=['token'];
+       $data_not_found=not_found_data($needed_requests);
        if($data_not_found){
            $msg="The data you have sent is incomplete. Add the data ( ".implode(' - ', $data_not_found) . ' )';
-           return res_jsone(0,$msg);
+           return res_json(0,$msg);
        }
        
         try{
@@ -18,7 +18,7 @@ class UserEditHandlers extends Handler{
             return $this->execute_edit($model,$id);
            
         }catch(\Exception $e){
-            return res_jsone(0,$e->getMessage());
+            return res_json(0,$e->getMessage());
         }
 
     }
@@ -27,10 +27,10 @@ class UserEditHandlers extends Handler{
     public function execute_edit($model,$id){
         $data=$model->edit($id);
         if($data){
-           return  res_jsone(1,'success',$data);
+           return  res_json(1,'success',$data);
         }else{
             $msg="This edit profile cannot be displayed. Perhaps the ID number is wrong or you do not have permission to edit";
-            return  res_jsone(0,$msg); 
+            return  res_json(0,$msg); 
         }
     }
 }

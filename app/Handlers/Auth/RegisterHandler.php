@@ -6,19 +6,19 @@ class RegisterHandler extends Handler{
     
     public  function register($model)
     {
-        $nedded_requests=['name','email','password'];
-        $data_not_found=notfound_data($nedded_requests);
+        $needed_requests=['name','email','password'];
+        $data_not_found=not_found_data($needed_requests);
         if($data_not_found){
             $msg="The data you have sent is incomplete. Add the data ( ".implode(' - ', $data_not_found) . ' )';
-            return res_jsone(0,$msg);
+            return res_json(0,$msg);
         }
 
         $has_error=$this->validate_register();
         if($has_error){
-            return res_jsone(0,'error validate',$has_error);
+            return res_json(0,'error validate',$has_error);
         }else{
             $data=$this->execute_register($model);
-            return res_jsone(1,'success',$data);
+            return res_json(1,'success',$data);
 
         }
     }

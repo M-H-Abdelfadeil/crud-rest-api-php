@@ -7,23 +7,23 @@ use Firebase\JWT\JWT;
 class PostCreateHandler extends Handler{
     public function create($model){
         $nedded_requsts=['token','title','description'];
-        $data_not_found=notfound_data($nedded_requsts);
+        $data_not_found=not_found_data($nedded_requsts);
         if($data_not_found){
             $msg="The data you have sent is incomplete. Add the data ( ".implode(' - ', $data_not_found) . ' )';
-            return res_jsone(0,$msg);
+            return res_json(0,$msg);
         }
 
         try{
             $data_decode=JWT::decode($_POST['token'],SECRET_TOKEN,[HASH_TOKEN]);
             $has_error=$this->validate_create();
             if($has_error){
-                return res_jsone(0,'error validate',$has_error);
+                return res_json(0,'error validate',$has_error);
             }else{
                $id= $data_decode->data_user->id;
                $this->execute_create($model,$id);
             }
         }catch(\Exception $e){
-            return res_jsone(0,$e->getMessage());
+            return res_json(0,$e->getMessage());
         }
     }
 
@@ -38,7 +38,7 @@ class PostCreateHandler extends Handler{
             'title'=>$title,
             'desription'=>$desription,
         ];
-        return res_jsone(1,'success add post',$data);
+        return res_json(1,'success add post',$data);
     }
 
     private function validate_create(){
