@@ -5,18 +5,18 @@ class PostShowHandler extends Handler{
     public function show($model){
 
         $nedded_requsts=['id_post'];
-        $data_not_found=notfound_data($nedded_requsts);
+        $data_not_found=not_found_data($nedded_requsts);
         
         if($data_not_found){
             $msg="The data you have sent is incomplete. Add the data ( ".implode(' - ', $data_not_found) . ' )';
-            return res_jsone(0,$msg);
+            return res_json(0,$msg);
         }
         $has_error=$this->validate_show();
         if($has_error){
-            return res_jsone(0,'error validate',$has_error);
+            return res_json(0,'error validate',$has_error);
         }
 
-        return res_jsone(1,'success',$this->get_post($model));
+        return res_json(1,'success',$this->get_post($model));
         
     }
 

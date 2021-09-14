@@ -7,16 +7,16 @@ class PostEditHandler extends Handler{
 
     public function edit($model){
         // check requests
-        $nedded_requests=['token','id_post'];
-        $data_not_found=notfound_data($nedded_requests);
+        $needed_requests=['token','id_post'];
+        $data_not_found=not_found_data($needed_requests);
         if($data_not_found){
             $msg="The data you have sent is incomplete. Add the data ( ".implode(' - ', $data_not_found) . ' )';
-            return res_jsone(0,$msg);
+            return res_json(0,$msg);
         }
         // check validate
         $has_error=$this->validate_edit();
         if($has_error){
-            return res_jsone(0,'error validate',$has_error);
+            return res_json(0,'error validate',$has_error);
         }
         // get user id 
         try{
@@ -24,7 +24,7 @@ class PostEditHandler extends Handler{
             $id_user=$data_decode->data_user->id;
             return $this->get_post($model,$id_user);
         }catch(\Exception $e){
-            return res_jsone(0,$e->getMessage());
+            return res_json(0,$e->getMessage());
         }
 
 
@@ -47,10 +47,10 @@ class PostEditHandler extends Handler{
         $id_post=$this->filter->num_int($_REQUEST['id_post']);
         $data=$model->edit($id_user,$id_post);
         if($data){
-           return  res_jsone(1,'success',$data);
+           return  res_json(1,'success',$data);
         }else{
             $msg="editing the post failed because it does not exist or you do not have permission to edit it";
-            return  res_jsone(0,$msg); 
+            return  res_json(0,$msg); 
         }
     }
 }

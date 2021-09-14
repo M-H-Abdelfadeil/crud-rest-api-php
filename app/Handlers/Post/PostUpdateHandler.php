@@ -6,16 +6,16 @@ use Firebase\JWT\JWT;
 class PostUpdateHandler extends Handler{
     public function  update($model){
         // check requests
-        $nedded_requests=['token','id_post','title','description'];
-        $data_not_found=notfound_data($nedded_requests);
+        $needed_requests=['token','id_post','title','description'];
+        $data_not_found=not_found_data($needed_requests);
         if($data_not_found){
             $msg="The data you have sent is incomplete. Add the data ( ".implode(' - ', $data_not_found) . ' )';
-            return res_jsone(0,$msg);
+            return res_json(0,$msg);
         }
         // check validate
         $has_error=$this->validate_update();
         if($has_error){
-            return res_jsone(0,'error validate',$has_error);
+            return res_json(0,'error validate',$has_error);
         }
         // get user id 
         try{
@@ -23,7 +23,7 @@ class PostUpdateHandler extends Handler{
             $id_user=$data_decode->data_user->id;
             return $this->execute_update($model,$id_user);
         }catch(\Exception $e){
-            return res_jsone(0,$e->getMessage());
+            return res_json(0,$e->getMessage());
         }
     }
 
@@ -46,10 +46,10 @@ class PostUpdateHandler extends Handler{
  
         $update=$model->update($id_user,$id_post,$title,$desription);
         if($update){
-            return  res_jsone(1,'Successfully updated');
+            return  res_json(1,'Successfully updated');
         }else{
             $msg="Post failed to update, perhaps an invalid ID number, or you do not have permission to update it";
-            return  res_jsone(0,$msg); 
+            return  res_json(0,$msg); 
         }
     }
 }
